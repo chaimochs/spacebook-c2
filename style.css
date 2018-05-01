@@ -1,23 +1,21 @@
 .comments-container {
-  display: none;
-}
-
-.show {
   display: block;
 }
 
-li {
-  padding: 15px 0;
+.noshow {
+  display: none;
 }
 
-.btn-danger {
-  margin-left: 20px;
+.comments-list {
+  height: 32px;
+  width: 224px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(111, 209, 136);
 }
 
-.comment-name {
-  margin-left: 40px;
-}
-
-.add-comment {
-  margin-left: 15px;
+.remove-comment {
+  position: absolute;
+  left: 35%;
+  padding-top: 1px;
 }
