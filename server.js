@@ -18,11 +18,6 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-
-// You will need to create 5 server routes
-// These will define your API:
-
-// 1) to handle getting all posts and their comments
 app.get("/posts", function (req, res) {
   Post.find({}, function (err, allPosts) {
     if (err) {
@@ -32,8 +27,6 @@ app.get("/posts", function (req, res) {
     }
   });
 });
-
-// 2) to handle adding a post
 
 app.post("/posts", function (req, res) {
   if (!req) {
@@ -48,8 +41,6 @@ app.post("/posts", function (req, res) {
   });
 });
 
-// 3) to handle deleting a post
-
 app.delete("/delete/:id", function (req, res) {
   if (!req) {
     console.log("Error");
@@ -62,13 +53,9 @@ app.delete("/delete/:id", function (req, res) {
   res.send("Deleted");  
 });
 
-// 4) to handle adding a comment to a post
-
 app.post("/posts/:id/comments", function (req, res){
       newId  = req.params.id;
-      console.log(newId);
       newComment = {text: req.body.text, user: req.body.user};
-      console.log(newComment);
       Post.findByIdAndUpdate(newId, { $push: { comments: newComment }}, { "new": true }, function (err, saved) {
         if (err) {
           res.send(err);
@@ -78,26 +65,18 @@ app.post("/posts/:id/comments", function (req, res){
       })
   });
 
-
-// 5) to handle deleting a comment from a post
-
-app.delete("/posts/del-comment/:id/:idC", function (req, res){
+app.delete("/posts/del-comment/:id/:comment_id", function (req, res){
            
   id = req.params.id;
-  idC = req.params.idC;
+  comment_id = req.params.comment_id;
   
-  Post.update({ _id: id},{$pull: { comments : {_id : idC} } },function (err, res1) {
+  Post.update({ _id: id},{$pull: { comments : {_id : comment_id} } },function (err, res1) {
   if(err)
-    res.send("failed")
+    res.send(err)
   else    
     res.send("Deleted")
   })
 });
-
-
-
-
-
 
 app.listen(SERVER_PORT, () => {
   console.log("Server started on port " + SERVER_PORT);

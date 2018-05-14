@@ -1,6 +1,6 @@
 import PostsRepository from './posts-repository.js';
 import PostsRenderer from './posts-renderer.js';
-import EventsHandler from './events-handler.js'; 
+import EventsHandler from './events-handler.js';
 
 let postsRepository = new PostsRepository();
 let postsRenderer = new PostsRenderer();
@@ -12,8 +12,11 @@ eventsHandler.registerToggleComments();
 eventsHandler.registerAddComment();
 eventsHandler.registerRemoveComment();
 
-postsRepository.fetch()
-    .then( function(posts){  
-        if(!posts){console.log("Error retrieving data");}  
-    else postsRenderer.renderPosts(posts);
-})
+postsRepository.fetchPosts()
+    .then(function (posts) {
+        postsRenderer.renderPosts(posts);
+    })
+    .catch(
+        () => {
+            console.log('An error has occurred');
+        })

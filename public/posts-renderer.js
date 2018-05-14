@@ -1,6 +1,3 @@
-    /**
-     * @class Responsible for rendering posts and comments in the HTML
-     */
 class PostsRenderer {
     constructor() {
         this.$posts = $(".posts");
@@ -12,9 +9,9 @@ class PostsRenderer {
         this.$posts.empty();
         let template = Handlebars.compile(this.$postTemplate);
         for (let i = 0; i < posts.length; i++) {
-          let newHTML = template(posts[i]);
-          this.$posts.append(newHTML);
-          this.renderComments(posts, i);
+            let newHTML = template(posts[i]);
+            this.$posts.append(newHTML);
+            this.renderComments(posts, i);
         }
     }
 
@@ -24,10 +21,10 @@ class PostsRenderer {
         $commentsList.empty();
         let template = Handlebars.compile(this.$commentTemplate);
         for (let i = 0; i < posts[postIndex].comments.length; i++) {
-          let newHTML = template(posts[postIndex].comments[i]);
-          $commentsList.append(newHTML);  
+            let newHTML = template(posts[postIndex].comments[i]);
+            $commentsList.append(newHTML);
         }
     }
- }
+}
 
 export default PostsRenderer
