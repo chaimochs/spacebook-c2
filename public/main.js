@@ -11,3 +11,9 @@ eventsHandler.registerRemovePost();
 eventsHandler.registerToggleComments();
 eventsHandler.registerAddComment();
 eventsHandler.registerRemoveComment();
+
+postsRepository.fetch()
+    .then( function(posts){  
+        if(!posts){console.log("Error retrieving data");}  
+    else postsRenderer.renderPosts(posts);
+})

@@ -13,7 +13,6 @@ class PostsRenderer {
         let template = Handlebars.compile(this.$postTemplate);
         for (let i = 0; i < posts.length; i++) {
           let newHTML = template(posts[i]);
-          console.log(newHTML);
           this.$posts.append(newHTML);
           this.renderComments(posts, i);
         }
@@ -26,9 +25,9 @@ class PostsRenderer {
         let template = Handlebars.compile(this.$commentTemplate);
         for (let i = 0; i < posts[postIndex].comments.length; i++) {
           let newHTML = template(posts[postIndex].comments[i]);
-          $commentsList.append(newHTML);
+          $commentsList.append(newHTML);  
         }
     }
-}
+ }
 
 export default PostsRenderer

@@ -1,0 +1,1 @@
+import PostsRepository from './posts-repository.js';
