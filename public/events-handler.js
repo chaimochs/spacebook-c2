@@ -12,7 +12,7 @@ class EventsHandler {
                 alert("Please enter text!");
             } else {
                 var addPosts = this.postsRepository.addPost($input.val());
-                addPosts.then(() => {
+                addPosts.then( () => {
                     this.postsRenderer.renderPosts(this.postsRepository.posts);
                     $input.val("");
                 });

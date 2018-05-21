@@ -45,7 +45,7 @@ app.delete("/delete/:id", function (req, res) {
   if (!req) {
     console.log("Error");
   }
-  Post.findByIdAndRemove(req.params.id, function(err, dleted){
+  Post.findByIdAndRemove(req.params.id, function(err, deleted){
     if(err){
     console.error(err);
     }
