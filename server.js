@@ -2,9 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-const SERVER_PORT = 8080;
+const SERVER_PORT = process.env.PORT || '8080';
 
-mongoose.connect('mongodb://localhost/spacebookDB', function () {
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/spacebookDB', function () {
   console.log("DB connection established!!!");
 })
 
